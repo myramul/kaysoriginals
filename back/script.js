@@ -29,7 +29,7 @@ prevButton.addEventListener("click", prevSlide);
 nextButton.addEventListener("click", nextSlide);
 
 
-setInterval(nextSlide, 4000);
+setInterval(nextSlide, 3000);
 
 
 showSlides(slideIndex);
