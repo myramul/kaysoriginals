@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kay's Originals</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kay’s Originals</title>
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    <h1>Kay's Originals</h1>
-    <script src="script.js"></script>
+    <header>
+        <img src="imgs/KaysOrigLogo.png" alt="Kay's Originals Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ARTISTS</a></li>
+                <li><a href="#">ARTWORK</a></li>
+                <li><a href="#">EXHIBITIONS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">ABOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h3 class="featured-heading">Featured Artwork &#8628;</h2>
+    <section class="slideshow-container">
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <div class="slide fade">
+            <img src="imgs/artwork/vangogh_starrynight.png" alt="Artwork 1">
+            <div class="caption">Artist: Vincent van Gogh | Title: Starry Night | Price: $5000</div>
+        </div>
+        <div class="slide fade">
+            <img src="imgs/artwork/hopper_soir_leu.png" alt="Artwork 2">
+            <div class="caption">Artist: Edward Hopper | Title: Soir Bleu | Price: $7500</div>
+        </div>
+        <div class="slide fade">
+            <img src="imgs/artwork/nighthawks_edward_hopper.jpg" alt="Artwork 3">
+            <div class="caption">Artist: Edward Hopper | Title: Nighthawks | Price: $8000</div>
+        </div>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <p>111 GALLERY AVE, ART CITY, NY 11548 | MON-SAT 10AM - 6PM</p>
+            <p>INFO@KAYSORIGINALS.COM</p>
+        </div>
+    </footer>
+    
+
+    <script src="../back/script.js"></script>
 </body>
 </html>
