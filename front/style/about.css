@@ -123,7 +123,6 @@ nav ul li a:hover {
 }
 
 .contact-card {
-    display: flex;
     font-family: 'Quantico', sans-serif;
     width: 50%;
     height: fit-content;
@@ -136,6 +135,22 @@ nav ul li a:hover {
     margin: auto;
     border-radius: 7px;
   }
+
+  .two-card-content h2 {
+    margin-top: 12px; 
+    margin-bottom: 0px; 
+    padding: 5px;
+    text-align: center;
+}
+
+.two-card-content p {
+  margin-top: 0px; 
+  margin-bottom: 0px; 
+  padding: 2px 6px;
+  text-align: center;
+}
+
+
 
 .card {
     font-family: 'Quantico', sans-serif;
@@ -181,12 +196,11 @@ nav ul li a:hover {
   }
 
   .two-card-content {
-    display: flex;
-    width: 40%;
-    gap: 10px;
-    padding: 8px 12px;
-    font-size: 15px;
-    font-weight: 600;
+    padding: 5px 5px;
+    font-size: 17px;
+    font-weight: 200;
+    width: 70%;
+    margin: auto;
   }
 
 
