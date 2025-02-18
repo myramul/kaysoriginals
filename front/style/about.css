@@ -165,6 +165,15 @@ nav ul li a:hover {
     font-weight: 600;
   }
 
+  .two-card-content {
+    display: flex;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+
   .card:hover {
     translate: -6px;
   }
