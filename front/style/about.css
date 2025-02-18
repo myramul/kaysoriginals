@@ -124,7 +124,6 @@ nav ul li a:hover {
 
 .contact-card {
     display: flex;
-    flex-wrap: nowrap;
     font-family: 'Quantico', sans-serif;
     width: 50%;
     height: fit-content;
