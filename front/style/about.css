@@ -122,6 +122,21 @@ nav ul li a:hover {
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 
+.contact-card {
+    display: flex;
+    font-family: 'Quantico', sans-serif;
+    width: 50%;
+    height: fit-content;
+    translate: -6px -6px;
+    background: #EAF2DB;
+    border: 3px solid #25322E;
+    box-shadow: 12px 12px 0 #25322E;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin: auto;
+    border-radius: 7px;
+  }
+
 .card {
     font-family: 'Quantico', sans-serif;
     width: 50%;
