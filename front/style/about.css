@@ -74,7 +74,7 @@ nav ul {
     gap: 20px;
     padding: 1%;
     background: rgba(234, 242, 219, 0.59);
-    border-radius: 20px;
+    border-radius: 30px;
     box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(17px);
     -webkit-backdrop-filter: blur(17px);
@@ -135,6 +135,10 @@ nav ul li a:hover {
     margin: auto;
     border-radius: 7px;
   }
+
+.contact-card:hover{
+  translate: -6px;
+}
 
   .two-card-content h2 {
     margin-top: 12px; 
