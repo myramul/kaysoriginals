@@ -72,7 +72,7 @@ nav ul {
     backdrop-filter: blur(17px);
     -webkit-backdrop-filter: blur(17px);
     border: 1px solid rgba(234, 242, 219, 0.34);
-    width: fit-content;
+    width: 100%;
 }
 
 nav ul li {
@@ -108,7 +108,7 @@ nav ul li a:hover {
     color: #EAF2DB;
     background-color: #25322E;
     border-radius: 20px;
-    padding: 5px;
+    padding: 7px;
     transition: all 0.3s ease-in-out;
     font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
