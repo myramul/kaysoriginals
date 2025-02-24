@@ -235,3 +235,19 @@ nav ul li a:hover {
 .footer-content p:hover {
     opacity: 1;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  padding-top: 7px;
+  display: block;
+  width: 100%;
+}
