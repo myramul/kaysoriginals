@@ -47,6 +47,7 @@ body {
     background-size: cover;
     background-position: center;
     cursor: url('../imgs/cursors/paint_brush.cur') 10 2, auto;
+    overflow: hidden;
 }
 
 header {

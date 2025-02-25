@@ -1,0 +1,20 @@
+Set up DB for kaysoriginals
+
+Install node from nodejs.org
+Check installation in Command Prompt:
+node -v
+npm -v
+
+In terminal from vscode: 
+npm init -y
+npm install express mysql2 cors
+
+Install MySQL on computer and create DB:
+Run SQL commands in kaysoriginals.sql file
+
+To run server, in terminal: 
+node server.js
+
+If you get an error about not being allowed to run scripts, 
+in Powershell (Run as Administrator) do the following command:
+Set-ExecutionPolicy RemoteSigned
