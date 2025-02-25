@@ -90,6 +90,37 @@ app.get('/api/artwork/:artworkId', (req, res) =>{
       }
     });
 });
+
+
+app.get("/api/artwork", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 8;
+  const offset = (page - 1) * limit;
+
+  db.query("SELECT COUNT(*) AS total FROM artwork", (err, countResult) => {
+    if (err) {
+      console.error("Error fetching total count: ", err);
+      res.status(500).send("Error fetching artwork count");
+      return;
+    }
+
+    const total = countResult[0].total;
+
+    db.query(
+      "SELECT a.*, CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name FROM artwork a, artists ar WHERE a.artist_id = ar.artist_id LIMIT ? OFFSET ?",
+      [limit, offset],
+      (err, results) => {
+        if (err) {
+          console.error("Error fetching artwork: ", err);
+          res.status(500).send("Error fetching artwork");
+        } else {
+          res.json({ artwork: results });
+        }
+      }
+    );
+  });
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
