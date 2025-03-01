@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",  // Change this to your MySQL password and run queries in kaysoriginals.sql
+    password: "passwordEight8",  // Change this to your MySQL password and run queries in kaysoriginals.sql
     database: "kaysoriginals"
 });
 
@@ -119,6 +119,22 @@ app.get("/api/artwork", (req, res) => {
       }
     );
   });
+});
+
+app.get("/api/featured", (req, res) =>{
+    const query = `
+    SELECT a.artwork_id, a.title, a.price, a.image_path, CONCAT(ar.first_name, " ", ar.last_name) AS artist_name
+    FROM artwork a, artists ar
+    WHERE a.artist_id = ar.artist_id AND a.artwork_id IN (4, 5, 7, 23);
+    `
+    db.query(query, (err, featuredArtwork) => {
+      if (err){
+        console.error("Error fetching featured artwork, ", err);
+        res.status(500).send("Error fetching featured artwork");
+      }else{
+        res.json({featured_art: featuredArtwork});
+      }
+    })
 });
 
 const PORT = 3000;

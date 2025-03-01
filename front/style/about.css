@@ -56,12 +56,22 @@ header {
     align-items: center;
     width: 90%;
     padding: 10px;
+    margin-bottom: 0;
 }
 
 h1{
-    font-size: 45px;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-size: 30px;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     text-align: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    color: #EAF2DB;
+    text-transform: uppercase;
+    border-radius: 30px;
+    background-color: #25322E;
+    padding: 12px 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -117,7 +127,7 @@ nav ul li a:hover {
     border-radius: 20px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 
@@ -156,8 +166,8 @@ nav ul li a:hover {
 
 
 .card {
-    font-family: 'Quantico', sans-serif;
-    width: 50%;
+    font-family: 'Funnel', sans-serif;
+    width: 40%;
     height: fit-content;
     translate: -6px -6px;
     background: #EAF2DB;
@@ -194,7 +204,7 @@ nav ul li a:hover {
   
   .content {
     padding: 8px 12px;
-    font-size: 23px;
+    font-size: 1.2rem;
     font-weight: 600;
   }
 
@@ -251,3 +261,18 @@ nav ul li a:hover {
   display: block;
   width: 100%;
 }
+
+.about-container {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 15px;
+}
+
+#map {
+  cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
+  width: fit-content;
+  padding: 0px;
+  height: fit-content;
+}
+

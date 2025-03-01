@@ -110,7 +110,7 @@ nav ul li a:hover {
     border-radius: 20px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 

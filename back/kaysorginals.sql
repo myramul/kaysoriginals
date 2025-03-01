@@ -116,7 +116,3 @@ UPDATE artwork
 SET image_path = CONCAT('imgs/artwork/', REPLACE(title, ' ', '-'), '-', artwork_id, '-', artist_id, '.jpg')
 WHERE artwork_id >= 0;
 
--- Check artwork table
-SELECT * FROM artwork
-WHERE artist_id = 1 OR artist_id = 2;
-
