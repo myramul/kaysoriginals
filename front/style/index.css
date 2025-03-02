@@ -108,7 +108,7 @@ nav ul li a:hover::after {
 nav ul li a:hover {
     color: #EAF2DB;
     background-color: #25322E;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
     font-family: 'Funnel', Arial, Helvetica, sans-serif;
