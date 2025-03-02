@@ -7,7 +7,7 @@ fetch(`http://localhost:3000/api/artist/${artistId}`)
   .then(response => response.json())
   .then(data => {
     const artistName = document.getElementById('artist-name');
-    artistName.textContent = "Artwork by: " + data['first_name'] + ' ' + data['last_name'];
+    artistName.textContent = "Works by " + data['first_name'] + ' ' + data['last_name'];
 
     const artworkContainer = document.getElementById('artwork-container');
     data.artwork.forEach(artwork => {

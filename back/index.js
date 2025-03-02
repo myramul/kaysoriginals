@@ -42,7 +42,7 @@ function displaySlideshow(featured_artwork){
         slide_img.alt = feat_art['artist_name'];
         slide_caption.innerHTML = `Artist: ${feat_art['artist_name']} | Title: ${feat_art['title']} | Price: $${feat_art['price']}`;
 
-        slide.classList.add("slide", "fade")
+        slide.classList.add("slide")
         slide_caption.classList.add("caption")
 
         slide.appendChild(slide_img);
