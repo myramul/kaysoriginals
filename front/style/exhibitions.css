@@ -111,7 +111,7 @@ nav ul li a:hover {
     border-radius: 20px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 
@@ -123,7 +123,7 @@ nav ul li a:hover {
     margin-bottom: 5px;
     color: #EAF2DB;
     text-transform: uppercase;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     border-radius: 30px;
     background-color: #25322E;
     padding: 12px 12px;
@@ -230,6 +230,8 @@ footer {
     gap: 5%;
     align-items: center;
     justify-content: center;
+    font-family: 'Funnel', sans-serif;
+
 
 }
 
