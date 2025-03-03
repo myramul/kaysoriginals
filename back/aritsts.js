@@ -1,6 +1,12 @@
 let currentPage = 1;
 const artistsPerPage = 8;
 let totalPages = 1; 
+let allArtists = [];
+const searchIcon = document.querySelector('.search-icon');
+const searchBox = document.querySelector('.search-box');
+const searchInput = document.querySelector('#search-input');
+const searchButton = document.querySelector('#search-button');
+
 
 async function fetchArtists(page) {
     try {
@@ -15,6 +21,7 @@ async function fetchArtists(page) {
             return;
         }
 
+        allArtists = data.artists;
         displayArtists(data.artists);
         handlePagination();
     } catch (error) {
@@ -30,6 +37,9 @@ function displayArtists(artists) {
       container.innerHTML = "<p>No artists found.</p>";
       return;
     }
+
+    searchBox.style.display = 'none';
+    searchIcon.style.display = 'block';
   
     artists.forEach(artist => {
       const artistCard = document.createElement('div');
@@ -68,10 +78,10 @@ function displayArtists(artists) {
   
       container.appendChild(artistCard);
     });
+
+
   }
-
   
-
 function changePage(direction) {
     currentPage += direction;
     fetchArtists(currentPage);
@@ -85,5 +95,43 @@ function handlePagination() {
     nextButton.disabled = currentPage === totalPages;
 }
 
-// Initial fetch
+function filterArtistsByLetter(artists, letter) {
+  if (letter == '#') {
+    return artists;
+  }
+  return artists.filter(artist => artist.first_name.toUpperCase().startsWith(letter));
+}
+
+function createAlphabet() {
+  const alphabetContainer = document.querySelector('.alphabet');
+  const alphabet = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  alphabetContainer.innerHTML = '';
+
+  for (let i = 0; i < alphabet.length; i++) {
+      const letter = document.createElement('span');
+      letter.textContent = alphabet[i];
+      letter.classList.add('letter');
+      letter.addEventListener('click', () => {
+          const filteredArtists = filterArtistsByLetter(allArtists, alphabet[i]);
+          displayArtists(filteredArtists);
+      });
+      alphabetContainer.appendChild(letter);
+  }
+}
+
+searchIcon.addEventListener('click', () => {
+  searchBox.style.display = 'block';
+  searchIcon.style.display = 'none';
+});
+
+searchButton.addEventListener('click', () => {
+  const searchString = searchInput.value.trim().toLowerCase();
+  const filteredArtists = allArtists.filter(artist => {
+      const artistName = `${artist.first_name} ${artist.last_name}`.toLowerCase();
+      return artistName.includes(searchString);
+  });
+  displayArtists(filteredArtists);
+});
+
+createAlphabet();
 fetchArtists(currentPage);

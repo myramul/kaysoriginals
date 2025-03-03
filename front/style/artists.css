@@ -121,16 +121,38 @@ h1{
     height: fit-content;
     margin: 0px auto;
     margin-bottom: 0px;
-    position: fixed;
-    margin-top: 9%;
-
-
     color: #EAF2DB;
     text-transform: uppercase;
     border-radius: 30px;
     background-color: #25322E;
     padding: 12px 12px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.head-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0%;
+  }
+
+.search-icon {
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+
+.search-box {
+    display: none;
+    margin-left: 20px;
+}
+
+.search-box input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Funnel', sans-serif;
+    color: #25322E;
 }
 
 #artists-container {
@@ -260,4 +282,18 @@ footer {
     opacity: 1;
 }
 
+.letter {
+    margin: 0 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    color: #25322E;
+    font-family: 'Quantico', sans-serif;
+}
+
+.letter:hover {
+    color: #295d4e;
+    text-decoration: underline;
+    font-size: 22px;
+}
 

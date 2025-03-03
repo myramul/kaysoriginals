@@ -20,13 +20,24 @@
             </ul>
         </nav>
     </header>
-    <h1>ARTISTS IN GALLERY</h1>
+    <div class = "head-container">
+        <h1>ARTISTS IN GALLERY</h1>
+    <button class="search-icon">&#128269;</button>
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search for an artist...">
+        <button id="search-button">&#128269;</button>
+    </div>
+    </div>
+    
     <div id="artists-container"></div>
 
     <div class="pagination">
         <button id="prev" onclick="changePage(-1)" disabled> &larr;</button>
         <button id="next" onclick="changePage(1)">&rarr;</button>
     </div>
+
+    <div class="alphabet"></div>
 
     <footer>
         <div class="footer-content">
