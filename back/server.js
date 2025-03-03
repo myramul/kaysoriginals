@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "passwordEight8",  // Change this to your MySQL password and run queries in kaysoriginals.sql
+    password: "",  // Change this to your MySQL password and run queries in kaysoriginals.sql
     database: "kaysoriginals"
 });
 
@@ -36,7 +36,7 @@ app.get("/api/artists", (req, res) => {
       const total = countResult[0].total;
   
       db.query(
-        "SELECT a.*, MIN(aw.image_path) AS artwork_image_path FROM artists a LEFT JOIN artwork aw ON a.artist_id = aw.artist_id GROUP BY a.artist_id LIMIT ? OFFSET ?",
+        "SELECT a.*, MIN(aw.image_path) AS artwork_image_path FROM artists a LEFT JOIN artwork aw ON a.artist_id = aw.artist_id GROUP BY a.artist_id ORDER BY a.first_name LIMIT ? OFFSET ?",
         [limit, offset],
         (err, results) => {
           if (err) {
