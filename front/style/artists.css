@@ -110,20 +110,27 @@ nav ul li a:hover {
     border-radius: 20px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 
 h1{
-    font-size: 40px;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-size: 1.2rem;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     text-align: center;
     height: fit-content;
-    color: #25322E;
     margin: 0px auto;
     margin-bottom: 0px;
     position: fixed;
     margin-top: 9%;
+
+
+    color: #EAF2DB;
+    text-transform: uppercase;
+    border-radius: 30px;
+    background-color: #25322E;
+    padding: 12px 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #artists-container {

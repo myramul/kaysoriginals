@@ -108,10 +108,10 @@ nav ul li a:hover::after {
 nav ul li a:hover {
     color: #EAF2DB;
     background-color: #25322E;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
 
@@ -159,7 +159,7 @@ nav ul li a:hover {
 
 .caption {
     position: absolute;
-    font-family: 'Quantico', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -213,7 +213,7 @@ nav ul li a:hover {
     margin-bottom: 5px;
     color: #EAF2DB;
     text-transform: uppercase;
-    font-family: 'Sheila', 'Blackcrayon', 'Crayon', 'Danfo', sans-serif;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
     border-radius: 30px;
     background-color: #25322E;
     padding: 12px 12px;

@@ -40,7 +40,7 @@ function displayArtwork(artwork) {
   
       const artworkCaption = document.createElement('div');
       artworkCaption.classList.add('artwork-caption');
-      artworkCaption.textContent = `${artwork.title} By: ${artwork.artist_name} | $${artwork.price}`;
+      artworkCaption.textContent = `${artwork.title} - ${artwork.artist_name} | $${artwork.price}`;
   
       artworkCard.appendChild(artworkImage);
       artworkCard.appendChild(artworkCaption);
