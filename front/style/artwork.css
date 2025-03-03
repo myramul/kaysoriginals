@@ -115,31 +115,57 @@ nav ul li a:hover {
 }
 
 h1{
-    font-size: 1.2rem;
-    font-family: 'Funnel', Arial, Helvetica, sans-serif;
-    text-align: center;
-    height: fit-content;
-    color: #25322E;
-    margin: 0px auto;
-    margin-bottom: 2px;
+  font-size: 1.2rem;
+  font-family: 'Funnel', Arial, Helvetica, sans-serif;
+  text-align: center;
+  height: fit-content;
+  margin: 0px auto;
+  margin-bottom: 0px;
+  color: #EAF2DB;
+  text-transform: uppercase;
+  border-radius: 30px;
+  background-color: #25322E;
+  padding: 12px 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-    color: #EAF2DB;
-    text-transform: uppercase;
-    border-radius: 30px;
-    background-color: #25322E;
-    padding: 12px 12px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+.head-container {
+  display: flex;
+  align-items: center;
+  margin-top: 0%;
+}
+
+.search-icon {
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.search-box {
+  display: none;
+  margin-left: 20px;
+}
+
+.search-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: 'Funnel', sans-serif;
+  color: #25322E;
 }
 
 #artwork-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr); 
     grid-gap: 20px;
     padding: 20px;
-    height: 70vh;
+    height: 68vh;
+    width: 94%;
     overflow-y:hidden;
     margin: 0px auto;
-  }
+}
   
   .artwork {
     position: relative;
@@ -187,7 +213,8 @@ h1{
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 button {
@@ -197,7 +224,7 @@ button {
     border: none;
     border-radius: 30px;
     width: 50px;
-    font-size: 15px;
+    font-size: 11px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Shrikhand', 'Helvetica', sans-serif;

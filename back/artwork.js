@@ -2,6 +2,12 @@ let currentPage = 1;
 const artworkPerPage = 8;
 let totalPages = 1; 
 
+const searchIcon = document.querySelector('.search-icon');
+const searchBox = document.querySelector('.search-box');
+const searchInput = document.querySelector('#search-input');
+const searchButton = document.querySelector('#search-button');
+let allArtwork = [];
+
 async function fetchArtwork(page) {
     try {
         const response = await fetch(`http://localhost:3000/api/artwork?page=${page}&limit=${artworkPerPage}`);
@@ -21,6 +27,16 @@ async function fetchArtwork(page) {
     }
 }
 
+async function fetchAllArtwork() {
+    try {
+        const response = await fetch('http://localhost:3000/api/all_artwork');
+        const data = await response.json();
+        allArtwork = data;
+    } catch (error) {
+        console.error("Error fetching all artwork:", error);
+    }
+}
+
 function displayArtwork(artwork) {
     const container = document.getElementById('artwork-container');
     container.innerHTML = "";
@@ -29,6 +45,9 @@ function displayArtwork(artwork) {
       container.innerHTML = "<p>No artwork found.</p>";
       return;
     }
+
+    searchBox.style.display = 'none';
+    searchIcon.style.display = 'block';
   
     artwork.forEach(artwork => {
       const artworkCard = document.createElement('div');
@@ -67,5 +86,21 @@ function handlePagination() {
     nextButton.disabled = currentPage === totalPages;
 }
 
+searchIcon.addEventListener('click', () => {
+  searchBox.style.display = 'block';
+  searchIcon.style.display = 'none';
+});
+
+searchButton.addEventListener('click', () => {
+  const searchString = searchInput.value.trim().toLowerCase();
+  const filteredArtwork = allArtwork.filter(artwork => {
+      const artistName = `${artwork.artist_name}`.toLowerCase();
+      const title = `${artwork.title}`.toLowerCase();
+      return artistName.includes(searchString) || title.includes(searchString);
+  });
+  displayArtwork(filteredArtwork);
+});
+
 // Initial fetch
+fetchAllArtwork();
 fetchArtwork(currentPage);

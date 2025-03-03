@@ -21,7 +21,6 @@ async function fetchArtists(page) {
             return;
         }
 
-        allArtists = data.artists;
         displayArtists(data.artists);
         handlePagination();
     } catch (error) {
@@ -78,8 +77,6 @@ function displayArtists(artists) {
   
       container.appendChild(artistCard);
     });
-
-
   }
   
 function changePage(direction) {
@@ -96,25 +93,36 @@ function handlePagination() {
 }
 
 function filterArtistsByLetter(artists, letter) {
-  if (letter == '#') {
-    return artists;
-  }
   return artists.filter(artist => artist.first_name.toUpperCase().startsWith(letter));
 }
 
-function createAlphabet() {
+async function createAlphabet() {
   const alphabetContainer = document.querySelector('.alphabet');
   const alphabet = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   alphabetContainer.innerHTML = '';
+
+  try{
+    const response = await fetch(`http://localhost:3000/api/all_artists`);
+    const data = await response.json();
+    allArtists = data;
+  }catch(error){
+    console.error("Error fetching all artist data:", error);
+  }
 
   for (let i = 0; i < alphabet.length; i++) {
       const letter = document.createElement('span');
       letter.textContent = alphabet[i];
       letter.classList.add('letter');
-      letter.addEventListener('click', () => {
+      if (i === 0) {
+          letter.addEventListener('click', () => {
+          fetchArtists(1);
+        });
+      }else{
+        letter.addEventListener('click', () => {
           const filteredArtists = filterArtistsByLetter(allArtists, alphabet[i]);
           displayArtists(filteredArtists);
-      });
+        });
+      }
       alphabetContainer.appendChild(letter);
   }
 }
