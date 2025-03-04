@@ -6,6 +6,11 @@ const searchIcon = document.querySelector('.search-icon');
 const searchBox = document.querySelector('.search-box');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
+const filterBox = document.getElementById("filter-box");
+const closeFilter = document.getElementById("close-filter");
+const filterIcon = document.querySelector(".filter-icon");
+const applyFiltersBtn = document.getElementById("apply-filters");
+const resetFiltersBtn = document.getElementById("reset-filters");
 let allArtwork = [];
 
 async function fetchArtwork(page) {
@@ -71,7 +76,6 @@ function displayArtwork(artwork) {
       container.appendChild(artworkCard);
     });
   }
-  
 
 function changePage(direction) {
     currentPage += direction;
@@ -107,6 +111,65 @@ searchInput.addEventListener('keypress', (event) => {
   }
 });
 
-// Initial fetch
-fetchAllArtwork();
+
+filterIcon.addEventListener("click", () => {
+    filterBox.style.display = "block";
+});
+
+closeFilter.addEventListener("click", () => {
+    filterBox.style.display = "none";
+});
+
+async function fetchFilters() {
+  try {
+      const response = await fetch('http://localhost:3000/api/filters');
+      const data = await response.json();
+
+      populateFilterOptions("medium-filters", data.mediums);
+      populateFilterOptions("theme-filters", data.themes);
+  } catch (error) {
+      console.error("Error fetching filter options:", error);
+  }
+}
+
+function populateFilterOptions(containerId, options) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    options.forEach(option => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="checkbox" name="${containerId}" value="${option}"> ${option}`;
+        container.appendChild(label);
+    });
+}
+
+applyFiltersBtn.addEventListener("click", () => {
+    const selectedPrice = document.querySelector("input[name='price']:checked")?.value;
+    const selectedMediums = [...document.querySelectorAll("input[name='medium-filters']:checked")].map(el => el.value);
+    const selectedThemes = [...document.querySelectorAll("input[name='theme-filters']:checked")].map(el => el.value);
+
+    const filteredArtwork = allArtwork.filter(artwork => {
+        let matchesPrice = !selectedPrice || (
+            (selectedPrice === "l1000" && artwork.price < 1000) ||
+            (selectedPrice === "1000-5000" && artwork.price >= 1000 && artwork.price <= 5000) ||
+            (selectedPrice === "5001-10000" && artwork.price >= 5001 && artwork.price <= 10000) ||
+            (selectedPrice === "g10000" && artwork.price > 10000)
+        );
+
+        let matchesMedium = !selectedMediums.length || selectedMediums.some(medium => artwork.artwork_medium.includes(medium));
+        let matchesTheme = !selectedThemes.length || selectedThemes.some(theme => artwork.theme.includes(theme));
+
+        return matchesPrice && matchesMedium && matchesTheme;
+    });
+    displayArtwork(filteredArtwork);
+    filterBox.style.display = "none"; 
+});
+
+resetFiltersBtn.addEventListener("click", () => {
+    document.querySelectorAll("input[type='radio']").forEach(el => el.checked = false);
+    document.querySelectorAll("input[type='checkbox']").forEach(el => el.checked = false);
+    displayArtwork(allArtwork); 
+});
+
 fetchArtwork(currentPage);
+fetchAllArtwork();
+fetchFilters();

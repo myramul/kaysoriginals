@@ -176,6 +176,33 @@ app.get("/api/featured", (req, res) =>{
     })
 });
 
+app.get("/api/filters", (req, res) => {
+  const query = "SELECT DISTINCT artwork_medium AS medium, theme FROM artwork";
+
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error("Error fetching filter options: ", err);
+          res.status(500).send("Error fetching filters");
+          return;
+      }
+
+      let mediumSet = new Set();
+      let themeSet = new Set();
+
+      results.forEach(row => {
+          row.medium.split('/').forEach(m => mediumSet.add(m.trim()));
+          row.theme.split('/').forEach(t => themeSet.add(t.trim()));
+      });
+
+
+      res.json({
+          mediums: [...mediumSet].sort(),
+          themes: [...themeSet].sort()
+      });
+  });
+});
+
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

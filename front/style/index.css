@@ -59,7 +59,8 @@ header {
 }
 
 .logo {
-    height: 100px;
+    height: 105px;
+    margin-bottom: 0px;
 }
 
 nav ul {
