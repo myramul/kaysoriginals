@@ -101,6 +101,12 @@ searchButton.addEventListener('click', () => {
   displayArtwork(filteredArtwork);
 });
 
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+      searchButton.click();
+  }
+});
+
 // Initial fetch
 fetchAllArtwork();
 fetchArtwork(currentPage);

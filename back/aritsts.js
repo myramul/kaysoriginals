@@ -141,5 +141,11 @@ searchButton.addEventListener('click', () => {
   displayArtists(filteredArtists);
 });
 
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+      searchButton.click();
+  }
+});
+
 createAlphabet();
 fetchArtists(currentPage);
