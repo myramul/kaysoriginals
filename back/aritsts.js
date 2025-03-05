@@ -1,6 +1,12 @@
 let currentPage = 1;
 const artistsPerPage = 8;
 let totalPages = 1; 
+let allArtists = [];
+const searchIcon = document.querySelector('.search-icon');
+const searchBox = document.querySelector('.search-box');
+const searchInput = document.querySelector('#search-input');
+const searchButton = document.querySelector('#search-button');
+
 
 async function fetchArtists(page) {
     try {
@@ -30,6 +36,9 @@ function displayArtists(artists) {
       container.innerHTML = "<p>No artists found.</p>";
       return;
     }
+
+    searchBox.style.display = 'none';
+    searchIcon.style.display = 'block';
   
     artists.forEach(artist => {
       const artistCard = document.createElement('div');
@@ -69,9 +78,7 @@ function displayArtists(artists) {
       container.appendChild(artistCard);
     });
   }
-
   
-
 function changePage(direction) {
     currentPage += direction;
     fetchArtists(currentPage);
@@ -85,5 +92,60 @@ function handlePagination() {
     nextButton.disabled = currentPage === totalPages;
 }
 
-// Initial fetch
+function filterArtistsByLetter(artists, letter) {
+  return artists.filter(artist => artist.first_name.toUpperCase().startsWith(letter));
+}
+
+async function createAlphabet() {
+  const alphabetContainer = document.querySelector('.alphabet');
+  const alphabet = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  alphabetContainer.innerHTML = '';
+
+  try{
+    const response = await fetch(`http://localhost:3000/api/all_artists`);
+    const data = await response.json();
+    allArtists = data;
+  }catch(error){
+    console.error("Error fetching all artist data:", error);
+  }
+
+  for (let i = 0; i < alphabet.length; i++) {
+      const letter = document.createElement('span');
+      letter.textContent = alphabet[i];
+      letter.classList.add('letter');
+      if (i === 0) {
+          letter.addEventListener('click', () => {
+          fetchArtists(1);
+        });
+      }else{
+        letter.addEventListener('click', () => {
+          const filteredArtists = filterArtistsByLetter(allArtists, alphabet[i]);
+          displayArtists(filteredArtists);
+        });
+      }
+      alphabetContainer.appendChild(letter);
+  }
+}
+
+searchIcon.addEventListener('click', () => {
+  searchBox.style.display = 'block';
+  searchIcon.style.display = 'none';
+});
+
+searchButton.addEventListener('click', () => {
+  const searchString = searchInput.value.trim().toLowerCase();
+  const filteredArtists = allArtists.filter(artist => {
+      const artistName = `${artist.first_name} ${artist.last_name}`.toLowerCase();
+      return artistName.includes(searchString);
+  });
+  displayArtists(filteredArtists);
+});
+
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+      searchButton.click();
+  }
+});
+
+createAlphabet();
 fetchArtists(currentPage);

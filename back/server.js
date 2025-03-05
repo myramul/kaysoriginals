@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Fool2019",  // Change this to your MySQL password and run queries in kaysoriginals.sql
+    password: "",  // Change this to your MySQL password and run queries in kaysoriginals.sql
     database: "kaysoriginals"
 });
 
@@ -49,6 +49,26 @@ app.get("/api/artists", (req, res) => {
       );
     });
   });
+
+  app.get('/api/all_artists', (req, res) =>{
+
+    const query = ` SELECT a.*, MIN(aw.image_path) AS artwork_image_path 
+    FROM artists a LEFT JOIN artwork aw 
+    ON a.artist_id = aw.artist_id 
+    GROUP BY a.artist_id 
+    ORDER BY a.first_name
+    `;
+
+    db.query(query, (err, results) => {
+      if (err){
+        console.error(err);
+        res.status(500).send({message: 'Error fetching all artist data'});
+      }else{
+        res.json(results || {});
+      }
+    });
+});
+
 
 app.get('/api/artist/:artistId', (req, res) => {
     const artistId = req.params.artistId;
@@ -107,17 +127,36 @@ app.get("/api/artwork", (req, res) => {
     const total = countResult[0].total;
 
     db.query(
-      "SELECT a.*, CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name FROM artwork a, artists ar WHERE a.artist_id = ar.artist_id LIMIT ? OFFSET ?",
+      "SELECT a.*, CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name FROM artwork a, artists ar WHERE a.artist_id = ar.artist_id ORDER BY a.title LIMIT ? OFFSET ?",
       [limit, offset],
       (err, results) => {
         if (err) {
           console.error("Error fetching artwork: ", err);
           res.status(500).send("Error fetching artwork");
         } else {
-          res.json({ artwork: results });
+          res.json({ artwork: results, total: total });
         }
       }
     );
+  });
+});
+
+app.get('/api/all_artwork', (req, res) =>{
+
+  const query = ` SELECT a.*, 
+    CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name 
+    FROM artwork a, artists ar 
+    WHERE a.artist_id = ar.artist_id 
+    ORDER BY a.title
+  `;
+
+  db.query(query, (err, results) => {
+    if (err){
+      console.error(err);
+      res.status(500).send({message: 'Error fetching all artwork data'});
+    }else{
+      res.json(results || {});
+    }
   });
 });
 
@@ -136,6 +175,33 @@ app.get("/api/featured", (req, res) =>{
       }
     })
 });
+
+app.get("/api/filters", (req, res) => {
+  const query = "SELECT DISTINCT artwork_medium AS medium, theme FROM artwork";
+
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error("Error fetching filter options: ", err);
+          res.status(500).send("Error fetching filters");
+          return;
+      }
+
+      let mediumSet = new Set();
+      let themeSet = new Set();
+
+      results.forEach(row => {
+          row.medium.split('/').forEach(m => mediumSet.add(m.trim()));
+          row.theme.split('/').forEach(t => themeSet.add(t.trim()));
+      });
+
+
+      res.json({
+          mediums: [...mediumSet].sort(),
+          themes: [...themeSet].sort()
+      });
+  });
+});
+
 
 const PORT = 3000;
 app.listen(PORT, () => {

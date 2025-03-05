@@ -60,11 +60,11 @@ header {
 }
 
 h1{
-    font-size: 30px;
+    font-size: 26px;
     font-family: 'Funnel', Arial, Helvetica, sans-serif;
     text-align: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
 
     color: #EAF2DB;
     text-transform: uppercase;
@@ -167,8 +167,8 @@ nav ul li a:hover {
 
 .card {
     font-family: 'Funnel', sans-serif;
-    width: 40%;
-    height: fit-content;
+    width: 45%;
+    height: 55vh;
     translate: -6px -6px;
     background: #EAF2DB;
     border: 3px solid #25322E;
@@ -204,7 +204,7 @@ nav ul li a:hover {
   
   .content {
     padding: 8px 12px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
   }
 
@@ -271,8 +271,7 @@ nav ul li a:hover {
 
 #map {
   cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
-  width: fit-content;
   padding: 0px;
-  height: fit-content;
+  width: 45%;
+  height: 55vh;
 }
-
