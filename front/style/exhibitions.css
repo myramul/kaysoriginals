@@ -43,7 +43,7 @@ body {
     height: 100vh;
     font-family: 'Shrikhand', Helvetica, sans-serif;
     background-color: #EAF2DB;
-    background-image: url(../imgs/background@2x.png);
+    background-image: url(../imgs/bg_pattern22.png);
     background-size: cover;
     background-position: center;
     cursor: url('../imgs/cursors/paint_brush.cur') 10 2, auto;
@@ -79,7 +79,7 @@ nav ul {
 nav ul li {
     display: inline;
     color: rgb(34, 34, 34);
-    font-size: 25px;
+    font-size: 22px;
 }
 
 nav ul li a {
@@ -135,6 +135,9 @@ nav ul li a:hover {
     font-style: italic;
     font-size: 13px;
     color: #376c5c;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: none;
 }
 
 .featured-heading:hover {
@@ -251,5 +254,15 @@ footer {
 }
 
 .exhibition-header {
-    font-size: 120%;
+    font-size: 95%;
+    color: #25322E
+}
+
+.active_nav{
+    color: #EAF2DB;
+    background-color: #376054;
+    border-radius: 30px;
+    padding: 7px;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
+    cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }

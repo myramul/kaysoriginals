@@ -1,1 +1,8 @@
-
+.active_nav{
+    color: #EAF2DB;
+    background-color: #376054;
+    border-radius: 30px;
+    padding: 7px;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
+    cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
+}

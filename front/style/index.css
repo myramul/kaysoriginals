@@ -33,6 +33,11 @@
     src: url('fonts/SheilaCrayon-1vWg.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Great-vibes';
+    src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
+  }
+
 body {
     margin: 0;
     padding: 0;
@@ -43,7 +48,7 @@ body {
     height: 100vh;
     font-family: 'Shrikhand', Helvetica, sans-serif;
     background-color: #EAF2DB;
-    background-image: url(../imgs/background@2x.png);
+    background-image: url(../imgs/bg_pattern22.png);
     background-size: cover;
     background-position: center;
     cursor: url('../imgs/cursors/paint_brush.cur') 10 2, auto;
@@ -81,13 +86,13 @@ nav ul {
 
 nav ul li {
     display: inline;
-    color: rgb(34, 34, 34);
-    font-size: 25px;
+   color: #25322E;
+    font-size: 22px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: rgb(34, 34, 34);
+    color: #25322E;
     font-weight: bold;
     position: relative;
 }
@@ -114,6 +119,15 @@ nav ul li a:hover {
     border-radius: 30px;
     padding: 7px;
     transition: all 0.3s ease-in-out;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
+    cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
+}
+
+.active_nav{
+    color: #EAF2DB;
+    background-color: #376054;
+    border-radius: 30px;
+    padding: 7px;
     font-family: 'Funnel', Arial, Helvetica, sans-serif;
     cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
@@ -268,4 +282,21 @@ footer {
     padding-top: 7px;
     display: block;
     width: 100%;
+}
+
+.kays_header {
+    font-family: 'sHRIKHAND';
+    font-size: 210%;
+    margin: 0px;
+    padding: 0px;
+    color: #376054;
+  }
+
+  .active_nav{
+    color: #EAF2DB;
+    background-color: #376054;
+    border-radius: 30px;
+    padding: 7px;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
+    cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }

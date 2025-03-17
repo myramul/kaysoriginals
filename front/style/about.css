@@ -48,7 +48,7 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-image: url(../imgs/background@2x.png);
+    background-image: url(../imgs/bg_pattern22.png);
     background-size: cover;
     background-position: center;
     cursor: url('../imgs/cursors/paint_brush.cur') 10 2, auto;
@@ -101,7 +101,7 @@ nav ul {
 nav ul li {
     display: inline;
     color: rgb(34, 34, 34);
-    font-size: 25px;
+    font-size: 22px;
 }
 
 nav ul li a {
@@ -285,4 +285,16 @@ nav ul li a:hover {
 .kays_header {
   font-family: 'Great-vibes';
   font-size: 300%;
+  margin: 0px;
+  padding: 0px;
+  text-shadow: 1px 1px 0 #131615;
+}
+
+.active_nav{
+    color: #EAF2DB;
+    background-color: #376054;
+    border-radius: 30px;
+    padding: 7px;
+    font-family: 'Funnel', Arial, Helvetica, sans-serif;
+    cursor: url('../imgs/cursors/link_select.cur') 10 2, auto;
 }
