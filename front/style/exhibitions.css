@@ -178,6 +178,7 @@ footer {
 }
 
 .exhibition-info {
+    font-size: 125%;
     width:  25%;
     height: 60vh;
     text-align: center;
@@ -239,7 +240,7 @@ footer {
 
 .exhibition-img {
     width: 100%;
-    height: 65%;
+    height: 75%;
 }
 
 .exhibition-header {
