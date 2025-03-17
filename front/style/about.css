@@ -33,6 +33,12 @@
     font-family: 'Sheila';
     src: url('fonts/SheilaCrayon-1vWg.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Great-vibes';
+  src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
+}
+
   
 body{
     margin: 0;
@@ -274,4 +280,9 @@ nav ul li a:hover {
   padding: 0px;
   width: 45%;
   height: 55vh;
+}
+
+.kays_header {
+  font-family: 'Great-vibes';
+  font-size: 300%;
 }
