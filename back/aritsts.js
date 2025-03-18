@@ -93,7 +93,7 @@ function handlePagination() {
 }
 
 function filterArtistsByLetter(artists, letter) {
-  return artists.filter(artist => artist.first_name.toUpperCase().startsWith(letter));
+  return artists.filter(artist => artist.last_name.toUpperCase().startsWith(letter));
 }
 
 async function createAlphabet() {
