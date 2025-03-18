@@ -118,30 +118,34 @@ app.get("/api/artwork", (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 8;
   const offset = (page - 1) * limit;
+  const theme = req.query.theme;
 
-  db.query("SELECT COUNT(*) AS total FROM artwork", (err, countResult) => {
-    if (err) {
-      console.error("Error fetching total count: ", err);
-      res.status(500).send("Error fetching artwork count");
-      return;
-    }
+  let query = `
+      SELECT a.*, CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name 
+      FROM artwork a, artists ar 
+      WHERE a.artist_id = ar.artist_id 
+  `;
 
-    const total = countResult[0].total;
+  let params = [];
 
-    db.query(
-      "SELECT a.*, CONCAT(ar.first_name, ' ', ar.last_name) AS artist_name FROM artwork a, artists ar WHERE a.artist_id = ar.artist_id ORDER BY a.title LIMIT ? OFFSET ?",
-      [limit, offset],
-      (err, results) => {
-        if (err) {
-          console.error("Error fetching artwork: ", err);
+  if (theme) {
+      query += ` AND a.theme LIKE ?`;
+      params.push(`%${theme}%`);
+  }
+
+  query += ` ORDER BY a.title LIMIT ? OFFSET ?`;
+  params.push(limit, offset);
+
+  db.query(query, params, (err, results) => {
+      if (err) {
+          console.error("Error fetching artwork:", err);
           res.status(500).send("Error fetching artwork");
-        } else {
-          res.json({ artwork: results, total: total });
-        }
+      } else {
+          res.json({ artwork: results, total: results.length });
       }
-    );
   });
 });
+
 
 app.get('/api/all_artwork', (req, res) =>{
 
@@ -208,4 +212,22 @@ app.get("/api/filters", (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+});
+
+app.get("/api/themes", (req, res) => {
+  const query = `
+      SELECT DISTINCT theme, MIN(image_path) AS image_path 
+      FROM artwork 
+      WHERE theme IS NOT NULL 
+      GROUP BY theme
+  `;
+
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error("Error fetching themes:", err);
+          res.status(500).send("Error fetching themes");
+      } else {
+          res.json(results);
+      }
+  });
 });

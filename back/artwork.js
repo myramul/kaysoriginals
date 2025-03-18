@@ -13,9 +13,14 @@ const applyFiltersBtn = document.getElementById("apply-filters");
 const resetFiltersBtn = document.getElementById("reset-filters");
 let allArtwork = [];
 
-async function fetchArtwork(page) {
+async function fetchArtwork(page, theme = null) {
     try {
-        const response = await fetch(`http://localhost:3000/api/artwork?page=${page}&limit=${artworkPerPage}`);
+        let url = `http://localhost:3000/api/artwork?page=${page}&limit=${artworkPerPage}`;
+        if (theme) {
+            url += `&theme=${encodeURIComponent(theme)}`;
+        }
+
+        const response = await fetch(url);
         const data = await response.json();
 
         totalPages = Math.ceil(data.total / artworkPerPage);
@@ -31,6 +36,14 @@ async function fetchArtwork(page) {
         console.error("Error fetching artwork:", error);
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const theme = urlParams.get("theme");
+
+    fetchArtwork(currentPage, theme);
+});
+
 
 async function fetchAllArtwork() {
     try {
@@ -170,6 +183,6 @@ resetFiltersBtn.addEventListener("click", () => {
     displayArtwork(allArtwork); 
 });
 
-fetchArtwork(currentPage);
+//fetchArtwork(currentPage);
 fetchAllArtwork();
 fetchFilters();
