@@ -5,6 +5,6 @@ A full-stack website for showcasing artwork, artists, and gallery information.
 ## Screenshots
 
 ### Homepage
-![Homepage Screenshot](front/imgs/Screenshots/homepage.png)
+![Homepage Screenshot](front/imgs/Screenshots/Homepage.png)
 
 
